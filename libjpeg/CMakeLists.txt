@@ -63,8 +63,8 @@ file(GLOB lib_hdrs *.h)
 # 				Define the library target:
 # ----------------------------------------------------------------------------------
 
-set(JPEGLIB_MAJOR 8)
-set(JPEGLIB_MINOR 3)
+set(JPEGLIB_MAJOR 9)
+set(JPEGLIB_MINOR b)
 set(JPEGLIB_NAME ${the_target})
 set(JPEGLIB_VERSION ${JPEGLIB_MAJOR}.${JPEGLIB_MINOR})
 
