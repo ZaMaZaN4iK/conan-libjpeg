@@ -6,14 +6,14 @@ from conans import CMake
 
 class libjpegConan(ConanFile):
     name = "libjpeg"
-    version = "8.3"
+    version = "9b"
     LIBJPEG_FOLDER_NAME = "libjpeg"
     generators = "cmake"
     settings = "os", "arch", "compiler", "build_type"
     options = {}
     default_options = ""
     exports = "CMakeLists.txt", "libjpeg/*"
-    url="http://github.com/mathieu/conan-libjpeg"
+    url="http://github.com/ZaMaZaN4iK/conan-libjpeg"
     # requires ="zlib/1.2.8@lasote/stable"
 
     def conan_info(self):
@@ -22,7 +22,7 @@ class libjpegConan(ConanFile):
         self.info.settings.compiler.version = "any"
 
     def source(self):
-        self.download_url = "http://ijg.org/files/jpegsr8c.zip"
+        self.download_url = "http://ijg.org/files/jpegsr9b.zip"
 
     def build(self):
         """ Define your project building. You decide the way of building it

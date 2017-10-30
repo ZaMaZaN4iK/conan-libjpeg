@@ -5,15 +5,15 @@ import os
 
 class DefaultNameConan(ConanFile):
     name = "DefaultName"
-    version = "8c"
+    version = "9b"
     settings = "os", "compiler", "arch", "build_type"
     generators = "cmake"
-    requires = "libjpeg/8.3@mathieu/stable"
+    requires = "libjpeg/9b@zamazan4ik/stable"
 
     def build(self):
-        cmake = CMake(self.settings)
-        self.run('cmake . %s' % cmake.command_line)
-        self.run("cmake --build . %s" % cmake.build_config)
+        cmake = CMake(self)
+        cmake.configure(build_dir="./")
+        cmake.build()
 
     def imports(self):
         self.copy(pattern="*.dll", dst="bin", src="bin")
