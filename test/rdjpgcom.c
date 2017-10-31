@@ -167,7 +167,9 @@ static int first_marker(void) {
   c1 = NEXTBYTE();
   c2 = NEXTBYTE();
   if (c1 != 0xFF || c2 != M_SOI)
+  {
     ERREXIT("Not a JPEG file");
+  }
   return c2;
 }
 
@@ -343,7 +345,6 @@ static void process_SOFn(int marker) {
 
 static int scan_JPEG_header(int verbose, int raw) {
   int marker;
-
   /* Expect SOI at start of file */
   if (first_marker() != M_SOI)
     ERREXIT("Expected SOI marker first");
@@ -464,38 +465,48 @@ int main(int argc, char **argv) {
     progname = "rdjpgcom"; /* in case C library doesn't provide it */
 
   /* Parse switches, if any */
-  for (argn = 1; argn < argc; argn++) {
+  for (argn = 1; argn < argc; argn++)
+  {
     arg = argv[argn];
     if (arg[0] != '-')
       break; /* not switch, must be file name */
     arg++;   /* advance over '-' */
-    if (keymatch(arg, "verbose", 1)) {
+    if (keymatch(arg, "verbose", 1)) 
+    {
       verbose++;
-    } else if (keymatch(arg, "raw", 1)) {
+    }
+    else if (keymatch(arg, "raw", 1))
+    {
       raw = 1;
-    } else
+    } 
+    else
       usage();
   }
 
   /* Open the input file. */
   /* Unix style: expect zero or one file name */
-  if (argn < argc - 1) {
+  if (argn < argc - 1) 
+  {
     fprintf(stderr, "%s: only one input file\n", progname);
     usage();
   }
-  if (argn < argc) {
-    if ((infile = fopen(argv[argn], READ_BINARY)) == NULL) {
+  if (argn < argc) 
+  {
+    if ((infile = fopen(argv[argn], READ_BINARY)) == NULL) 
+    {
       fprintf(stderr, "%s: can't open %s\n", progname, argv[argn]);
       exit(EXIT_FAILURE);
     }
-  } else if ((infile = fopen("../../../test/testimg.jpg", READ_BINARY)) ==
-             NULL) {
+  } 
+  else if ((infile = fopen("../../../testimg.jpg", READ_BINARY)) == NULL) 
+  {
 /* default input file is stdin */
 #ifdef USE_SETMODE /* need to hack file mode? */
     setmode(fileno(stdin), O_BINARY);
 #endif
 #ifdef USE_FDOPEN /* need to re-open in binary mode? */
-    if ((infile = fdopen(fileno(stdin), READ_BINARY)) == NULL) {
+    if ((infile = fdopen(fileno(stdin), READ_BINARY)) == NULL) 
+    {
       fprintf(stderr, "%s: can't open stdin\n", progname);
       exit(EXIT_FAILURE);
     }
