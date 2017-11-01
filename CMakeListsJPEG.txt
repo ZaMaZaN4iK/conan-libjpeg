@@ -117,19 +117,19 @@ set(exec_prefix ${CMAKE_INSTALL_PREFIX})
 set(libdir      ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}) 
 set(includedir  ${CMAKE_INSTALL_PREFIX}/include) 
 set(LIBS        "-lz -lm") 
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/libjpeg.pc.in 
-  ${CMAKE_CURRENT_BINARY_DIR}/${JPEGLIB_NAME}.pc @ONLY) 
-_jpeg_generate_symlink_code(JPEG_PC_INSTALL_CODE 
-  ${CMAKE_CURRENT_BINARY_DIR}/${JPEGLIB_NAME}.pc 
-  ${CMAKE_CURRENT_BINARY_DIR}/libjpeg.pc) 
-install(CODE ${JPEG_PC_INSTALL_CODE}) 
- 
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/libjpeg-config.in 
-  ${CMAKE_CURRENT_BINARY_DIR}/${JPEGLIB_NAME}-config @ONLY) 
-_jpeg_generate_symlink_code(JPEG_CONFIG_INSTALL_CODE 
-  ${CMAKE_CURRENT_BINARY_DIR}/${JPEGLIB_NAME}-config 
-  ${CMAKE_CURRENT_BINARY_DIR}/libjpeg-config) 
-install(CODE ${JPEG_CONFIG_INSTALL_CODE}) 
+#configure_file(${CMAKE_CURRENT_SOURCE_DIR}/libjpeg.pc.in 
+#  ${CMAKE_CURRENT_BINARY_DIR}/${JPEGLIB_NAME}.pc @ONLY) 
+#_jpeg_generate_symlink_code(JPEG_PC_INSTALL_CODE 
+#  ${CMAKE_CURRENT_BINARY_DIR}/${JPEGLIB_NAME}.pc 
+#  ${CMAKE_CURRENT_BINARY_DIR}/libjpeg.pc) 
+#install(CODE ${JPEG_PC_INSTALL_CODE}) 
+# 
+#configure_file(${CMAKE_CURRENT_SOURCE_DIR}/libjpeg-config.in 
+#  ${CMAKE_CURRENT_BINARY_DIR}/${JPEGLIB_NAME}-config @ONLY) 
+#_jpeg_generate_symlink_code(JPEG_CONFIG_INSTALL_CODE 
+#  ${CMAKE_CURRENT_BINARY_DIR}/${JPEGLIB_NAME}-config 
+#  ${CMAKE_CURRENT_BINARY_DIR}/libjpeg-config) 
+#install(CODE ${JPEG_CONFIG_INSTALL_CODE}) 
  
   # MSVC doesn't use a different file extension for shared vs. static 
   # libs.  We are able to change OUTPUT_NAME to remove the _static 
