@@ -59,7 +59,7 @@ file(GLOB lib_srcs
  
 file(GLOB lib_hdrs *.h) 
  
-message(STATUS lib_hdrs)
+message(STATUS ${lib_hdrs})
  
 # ---------------------------------------------------------------------------------- 
 #         Define the library target: 
