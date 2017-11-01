@@ -52,10 +52,6 @@ class libjpegConan(ConanFile):
             if not tools.OSInfo().is_windows:
                 env_build = AutoToolsBuildEnvironment(self)
                 env_build.fpic = True
-                if self.settings.os == "Macos":
-                    old_str = '-install_name $libdir/$SHAREDLIBM'
-                    new_str = '-install_name $SHAREDLIBM'
-                    tools.replace_in_file("./configure", old_str, new_str)
                 confArgs = []
                 if self.options.shared:
                     confArgs.append("--enable-shared=yes --enable-static=no")
