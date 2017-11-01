@@ -1,4 +1,5 @@
 import os
+import shutil
 
 from conans import ConanFile, CMake, AutoToolsBuildEnvironment
 from conans.client import tools
@@ -13,7 +14,7 @@ class libjpegConan(ConanFile):
     options = {"shared": [True, False]}
     default_options = "shared=False"
     license = "GNU General Public License version 2.0 (GPLv2): https://sourceforge.net/projects/libjpeg/"
-    exports = "CMakeLists.txt", "libjpeg/*"
+    exports = "CMakeLists.txt", "libjpeg/*", "CMakeListsJPEG.txt"
     url="http://github.com/ZaMaZaN4iK/conan-libjpeg"
     # requires ="zlib/1.2.8@lasote/stable"
 
@@ -40,6 +41,7 @@ class libjpegConan(ConanFile):
     def source(self):
         tools.download(self.download_url, self.src_name)
         tools.unzip(self.src_name)
+        shutil.copy("CMakeListsJPEG.txt", "%s/CMakeLists.txt" % (self.LIBJPEG_FOLDER_NAME))
         #os.unlink(self.src_name)
         if self.settings.os != "Windows":
             # Remove Windows-like line endings (CRLF) from build scripts
